@@ -1293,7 +1293,7 @@ class ChannelShuffle(object):
         """
         shuffle = True if np.random.rand() < self.prob else False
         if shuffle:
-            assert results['image'].shape[1] == 3, "results['image'].shape[1] should be 3"
+            assert results['img'].shape[1] == 3, "results['img'].shape[1] should be 3"
             results['img'] = results['img'][:,[2, 1, 0], ...]
 
         return results
