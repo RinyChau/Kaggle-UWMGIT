@@ -1270,3 +1270,33 @@ class Albu:
         repr_str = self.__class__.__name__ + f'(transforms={self.transforms})'
         return repr_str
 
+@PIPELINES.register_module()
+class ChannelShuffle(object):
+    """This class is used to shuffle the 2.5D medical image only
+
+    Args:
+        prob (float): The shuffle probability. Default: None.
+    """
+
+    def __init__(self, prob):
+        self.prob = prob
+        assert 0 <= prob <= 1
+
+    def __call__(self, results):
+        """Call function to shuffle channel
+
+        Args:
+            results (dict): Result dict from loading pipeline.
+
+        Returns:
+            dict: Shuffled results.
+        """
+        shuffle = True if np.random.rand() < self.prob else False
+        if shuffle:
+            assert results['image'].shape[1] == 3, "results['image'].shape[1] should be 3"
+            results['img'] = results['img'][:,[2, 1, 0], ...]
+
+        return results
+
+    def __repr__(self):
+        return self.__class__.__name__ + f'(prob={self.prob})'

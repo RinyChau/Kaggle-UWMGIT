@@ -6,7 +6,7 @@ from .loading import LoadAnnotations, LoadImageFromFile
 from .test_time_aug import MultiScaleFlipAug
 from .transforms import (CLAHE, AdjustGamma, Normalize, Pad,
                          PhotoMetricDistortion, RandomCrop, RandomFlip,
-                         RandomRotate, Rerange, Resize, RGB2Gray, SegRescale)
+                         RandomRotate, Rerange, Resize, RGB2Gray, SegRescale, ChannelShuffle)
 from .custom.tamper_transforms import RandomCopyMove
 
 __all__ = [
@@ -15,5 +15,5 @@ __all__ = [
     'MultiScaleFlipAug', 'Resize', 'RandomFlip', 'Pad', 'RandomCrop',
     'Normalize', 'SegRescale', 'PhotoMetricDistortion', 'RandomRotate',
     'AdjustGamma', 'CLAHE', 'Rerange', 'RGB2Gray',
-    'RandomCopyMove'
+    'RandomCopyMove', 'ChannelShuffle'
 ]
