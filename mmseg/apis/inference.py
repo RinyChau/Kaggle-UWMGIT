@@ -64,6 +64,8 @@ class LoadImage:
         results['img'] = img
         results['img_shape'] = img.shape
         results['ori_shape'] = img.shape
+        # todo just for UWMGIT
+        results['scale_factor'] = 1.0
         return results
 
 
